@@ -14,7 +14,7 @@ TreeNode *initialize_tree_node(void *data, char *(*fmt_data)(void *to_be_printed
     tree_node->data = data;
     tree_node->drop_data = drop_data;
     tree_node->parent = NULL;
-    tree_node->children = initialize_list(fmt_data, tree_node->drop);
+    tree_node->children = initialize_list(fmt_data, (void*)tree_node->drop);
     return tree_node;
 }
 
@@ -45,7 +45,7 @@ void print_tree_node(TreeNode *self, FILE* stream) {
     if (children->count(children)) {
         fprintf(stream, "->{");
         void print_tree_node_child(TreeNode* child, int i, FILE* stream);
-        children->for_each(children, print_tree_node_child, stream);
+        children->for_each(children, (void*)print_tree_node_child, stream);
         fprintf(stream, "}");
     }
     free(data_formatted);

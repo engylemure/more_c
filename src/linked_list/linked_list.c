@@ -80,12 +80,14 @@ void drop_list(LinkedList *list)
 }
 
 int cmp(const void *self, const void *other)
-{
+{  
+    return 0;
 }
 
 int delete_node(LinkedList *self, void *to_be_deleted)
 {
     printf("delete_node");
+    return 0;
 }
 
 void push(LinkedList *self, void *to_be_pushed)
